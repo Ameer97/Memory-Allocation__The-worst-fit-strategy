@@ -1,0 +1,10 @@
+c:\users\ameer\documents\visual studio 2013\Projects\os3\bin\Debug\os3.exe.config
+c:\users\ameer\documents\visual studio 2013\Projects\os3\bin\Debug\os3.exe
+c:\users\ameer\documents\visual studio 2013\Projects\os3\bin\Debug\os3.pdb
+c:\users\ameer\documents\visual studio 2013\Projects\os3\bin\Debug\os3.xml
+c:\users\ameer\documents\visual studio 2013\Projects\os3\obj\Debug\os3.Form1.resources
+c:\users\ameer\documents\visual studio 2013\Projects\os3\obj\Debug\os3.Resources.resources
+c:\users\ameer\documents\visual studio 2013\Projects\os3\obj\Debug\os3.vbproj.GenerateResource.Cache
+c:\users\ameer\documents\visual studio 2013\Projects\os3\obj\Debug\os3.exe
+c:\users\ameer\documents\visual studio 2013\Projects\os3\obj\Debug\os3.xml
+c:\users\ameer\documents\visual studio 2013\Projects\os3\obj\Debug\os3.pdb
