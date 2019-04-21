@@ -1,74 +1,80 @@
 ﻿Public Class Form1
-
-    Dim loc = "300,600,350,200,750,128"
-    Dim pro = "115,500,355,200,375"
-
-    Dim locations() As String
-    Dim Proccress() As String
-
+    Dim locationsInteger(), proccessInteger() As Integer
+     Dim locations(), proccess() As String
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        locations = Split(loc, ",")
-        Proccress = Split(pro, ",")
-        MessageBox.Show("locations" & vbLf & Join(locations, vbLf) & vbLf & vbLf & "proccess" & vbLf & Join(Proccress, vbLf))
+        'the static entery ..
+        Dim loc = "300,600,350,200,750,128"
+        Dim pro = "115,500,355,200,375"
 
-        'For i = 0 To theLength - 1
-        '    locations(i) = InputBox("fill the location " & i + 1 & " from " & theLength)
+
+        'the dynamic entery ..
+        'Dim locationsLength = InputBox("Enter The number of Locations")
+        'Dim ProccessLength = InputBox("Enter The number of Proccess")
+
+
+        'Dim loc As String = InputBox("Enter the location of index: 0")
+        'For i = 1 To locationsLength - 1
+        '    loc += "," & InputBox("Enter The Locations of index:" & i)
         'Next
 
 
-        'For i = 0 To theLengthProccess - 1
-        '    Proccress(i) = InputBox("fill the proccess " & i + 1 & " from " & theLength)
+        'Dim pro As String = InputBox("Enter the proccess of index: 0")
+        'For i = 1 To ProccessLength - 1
+        '    pro += "," & InputBox("Enter The proccess of index:" & i)
         'Next
 
+        'start proccess
+        locations = loc.Split(",")
+        proccess = pro.Split(",")
         first()
     End Sub
 
     Function first()
+        locationsInteger = ToIntegerForm(locations)
+        proccessInteger = ToIntegerForm(proccess)
+        MessageBox.Show("locations" & vbLf & Join(ToStringForm(locationsInteger), vbLf) & vbLf & vbLf & "proccess" & vbLf & Join(ToStringForm(proccessInteger), vbLf))
+        Dim counter As Integer = 0
 
-        Dim counter = 0
-        Dim locationsInteger = WorstSort(toInteger(locations))
-        Dim ProccressInteger = toInteger(Proccress)
-
-        For i = 0 To Proccress.Length - 1
+        For i = 0 To proccessInteger.length - 1
 this:
+            WorstSort()
+
             Try
-                If locationsInteger(counter) >= ProccressInteger(i) Then
-                    locationsInteger(counter) -= ProccressInteger(i)
-                    Proccress(i) = 0
+                If locationsInteger(counter) >= proccessInteger(i) Then
+                    locationsInteger(counter) -= proccessInteger(i)
+                    proccessInteger(i) = 0
                     counter = 0
 
-                    locationsInteger = WorstSort(locationsInteger)
-                    locations = toTheString(locationsInteger)
-                    MessageBox.Show("locations" & vbLf & Join(locations, vbLf) & vbLf & vbLf & "proccess" & vbLf & Join(Proccress, vbLf))
+                    WorstSort()
+                    MessageBox.Show("locations" & vbLf & Join(ToStringForm(locationsInteger), vbLf) & vbLf & vbLf & "proccess" & vbLf & Join(ToStringForm(proccessInteger), vbLf))
 
                 Else
                     counter += 1
                     GoTo this
                 End If
             Catch ex As Exception
-                MessageBox.Show("This way is not correct for this input")
+                MessageBox.Show("This way isn't correct for this input")
             End Try
-        Next
 
-        Return 0
+        Next
     End Function
 
-    Function WorstSort(randomNumbers() As Integer)
-        Array.Sort(randomNumbers)
-        Dim keys(randomNumbers.Length - 1) As Integer
-        For i = 0 To randomNumbers.Length - 1
-            keys(i) = randomNumbers.Length - 1 - i
+    Function WorstSort()
+        Array.Sort(locationsInteger)
+        Dim keys(locationsInteger.Length - 1) As Integer
+        For i = 0 To locationsInteger.Length - 1
+            keys(i) = locationsInteger.Length - 1 - i
         Next
-        Array.Sort(keys, randomNumbers)
-        Return randomNumbers
+        Array.Sort(keys, locationsInteger)
+        Return locationsInteger
     End Function
 
-    Function toInteger(StringArray() As String)
+    Function ToIntegerForm(StringArray() As String)
         Return Array.ConvertAll(StringArray, Function(str) Integer.Parse(str))
     End Function
 
-    Function toTheString(IntegerArray() As Integer)
-        Return Array.ConvertAll(IntegerArray, Function(x) x.ToString)
+    Function ToStringForm(IntegerArray() As Integer)
+        Return Array.ConvertAll(IntegerArray, Function(int) int.ToString)
     End Function
 End Class
